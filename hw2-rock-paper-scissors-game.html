@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[剪刀！石頭！布！]</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            background-color: rgb(224, 85, 47);
+        }
+
+        .title {
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            color: bisque;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .player_choice {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(47, 90, 62);
+            color: rgb(237, 124, 93);
+            border: 4px dashed transparent;
+            border-radius: 100%;
+            font-size: 20px;
+            font-weight: bolder;
+            border: 4px solid rgb(72, 131, 106);
+
+        }
+
+        .gamespace {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        #scissors {
+            background-image: url(./svg/1.svg);
+        }
+
+        #rock {
+            background-image: url(./svg/2.svg);
+        }
+
+        #paper {
+            background-image: url(./svg/3.svg);
+        }
+
+        #computer_result {
+            position: absolute;
+            top: 140%;
+            left: 50%;
+            color: bisque;
+            border: 3px dashed rgb(237, 124, 93);
+            border-radius: 18px;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+
+        }
+
+        #paper:hover {
+            background-color: rgb(0, 0, 0);
+            border: 3px dashed rgb(224, 85, 47);
+        }
+
+        #rock:hover {
+            background-color: rgb(0, 0, 0);
+            border: 3px dashed rgb(224, 85, 47);
+        }
+
+        #scissors:hover {
+            background-color: rgb(0, 0, 0);
+            border: 3px dashed rgb(224, 85, 47);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 有剪刀、石頭、布的按鈕 -->
+    <h2 class="title">點擊即開始猜拳遊戲</h2>
+    <div class="gamespace">
+        <!-- 語意標籤上有內容的地方都可以直接綁上監聽事件 -->
+        <button class="player_choice" id="scissors" type="button">剪刀</button>
+        <button class="player_choice" id="rock" type="button">石頭</button>
+        <button class="player_choice" id="paper" type="button">布</button>
+        <p id="computer_result">遊戲結果</p>
+    </div>
+
+    <script>
+        // 獲取按鈕元素
+        let btn_scissors = document.querySelector('#scissors');
+        let btn_rock = document.querySelector('#rock');
+        let btn_paper = document.querySelector('#paper');
+
+        
+        let choices = ['剪刀', '石頭', '布'];
+        let computer_choice = choices[Math.floor(Math.random() * 3)];
+
+
+        // 增加點擊時的監聽事件
+        btn_scissors.addEventListener('click', function () {
+
+            let result = '';
+
+            if (computer_choice === '剪刀') {
+                result = `平手🤝再來一次`;
+            } else if (computer_choice === '石頭') {
+                result = `嗚嗚輸了🤦🏻`;
+            } else if (computer_choice === '布') {
+                result = `🥳恭喜贏了！`;
+            }
+            document.querySelector('#computer_result').textContent = result;
+
+        });
+
+        btn_rock.addEventListener('click', function () {
+
+            let result = '';
+
+            if (computer_choice === '剪刀') {
+                result = `🥳恭喜贏了！`;
+            } else if (computer_choice === '石頭') {
+                result = `平手🤝再來一次`;
+            } else if (computer_choice === '布') {
+                result = `嗚嗚輸了🤦🏻`;
+            }
+            document.querySelector('#computer_result').textContent = result;
+
+        });
+
+        btn_paper.addEventListener('click', function () {
+
+            let result = '';
+
+            if (computer_choice === '剪刀') {
+                result = `嗚嗚輸了🤦🏻`;
+            } else if (computer_choice === '石頭') {
+                result = `🥳恭喜贏了！`;
+            } else if (computer_choice === '布') {
+                result = `平手🤝再來一次`;
+            }
+            document.querySelector('#computer_result').textContent = result;
+
+        });
+ 
+    </script>
+</body>
+</html>
